@@ -335,9 +335,9 @@ class ApiClient
         self::$logger->debug("HTTP Request Body:\n" . print_r($printPostData, true));
         
         // debugging for curl
-        if (($this->merchantConfig->getLogConfiguration())->isLoggingEnabled()) {
+        if ($this->merchantConfig->getLogConfiguration()->isLoggingEnabled()) {
             curl_setopt($curl, CURLOPT_VERBOSE, 1);
-            $tempBlowup = explode(DIRECTORY_SEPARATOR, ($this->merchantConfig->getLogConfiguration())->getDebugLogFile());
+            $tempBlowup = explode(DIRECTORY_SEPARATOR, $this->merchantConfig->getLogConfiguration()->getDebugLogFile());
             $normalLogFilename = end($tempBlowup);
             $filenameIndex = key($tempBlowup);
             $tempBlowup[$filenameIndex] = "curlNetwork.log";
